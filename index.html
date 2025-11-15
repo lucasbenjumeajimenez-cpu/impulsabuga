@@ -3,403 +3,608 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bolsa Juvenil Colombia — Deja tu hoja de vida</title>
+  <title>Bolsa Juvenil Colombia — ImpulsaBuga</title>
+
   <style>
     :root{
-      --bg: #f7f9fc;
-      --card: #ffffff;
-      --accent: #0b5ed7;
-      --muted: #6b7280;
-      --success: #16a34a;
-      --danger: #dc3545;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg: #050816;
+      --bg-card: #0b1020;
+      --bg-soft: #111827;
+      --accent: #60a5fa;
+      --accent-soft: rgba(96,165,250,0.12);
+      --accent-strong: #2563eb;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148,163,184,0.35);
+      --chip-bg: rgba(15,23,42,0.85);
+      --success: #22c55e;
+      --danger: #ef4444;
+      --shadow-soft: 0 18px 45px rgba(15,23,42,0.6);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+                   "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+
     body{
       margin:0;
-      background:linear-gradient(180deg,#f7f9fc, #eef4ff 60%);
-      color:#0f172a;
+      min-height:100vh;
+      color:var(--text-main);
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.22), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(129,140,248,0.25), transparent 55%),
+        radial-gradient(circle at top right, rgba(96,165,250,0.20), transparent 55%),
+        #020617;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
+      display:flex;
+      flex-direction:column;
     }
+
     header{
-      background:transparent;
-      padding:18px 20px;
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter: blur(14px);
+      background:linear-gradient(to bottom, rgba(15,23,42,0.98), rgba(15,23,42,0.90), transparent);
+      border-bottom:1px solid rgba(30,64,175,0.45);
+    }
+
+    .nav-inner{
+      max-width:1120px;
+      margin:0 auto;
+      padding:10px 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:16px;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
     }
+
     .logo{
-      width:44px;
-      height:44px;
-      background:linear-gradient(135deg,var(--accent),#7ab8ff);
-      border-radius:10px;
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:
+        radial-gradient(circle at 10% 0, #e0f2fe, transparent 55%),
+        radial-gradient(circle at 90% 100%, #bfdbfe, transparent 55%),
+        linear-gradient(135deg, #1d4ed8, #0ea5e9);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:white;
-      font-weight:700;
+      color:#eff6ff;
+      font-weight:800;
       font-size:18px;
+      letter-spacing:0.05em;
+      box-shadow:0 12px 25px rgba(30,64,175,0.6);
     }
-    .container{
-      max-width:1100px;
-      margin: 14px auto;
-      padding:18px;
+
+    .brand-text-title{
+      font-weight:700;
+      font-size:15px;
+    }
+
+    .brand-text-sub{
+      font-size:12px;
+      color:var(--text-muted);
+    }
+
+    .nav-pill{
+      border-radius:999px;
+      padding:6px 12px;
+      border:1px solid rgba(148,163,184,0.35);
+      background:radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,0.85));
+      color:var(--text-muted);
+      font-size:11px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      white-space:nowrap;
+    }
+
+    .nav-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background: #22c55e;
+      box-shadow:0 0 12px rgba(34,197,94,0.9);
+    }
+
+    main{
+      flex:1;
+      width:100%;
+    }
+
+    .shell{
+      max-width:1120px;
+      margin:0 auto;
+      padding:16px;
+      padding-bottom:32px;
+    }
+
+    .hero{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:12px;
+      margin-bottom:18px;
+    }
+
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      align-self:flex-start;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.45);
+      background:radial-gradient(circle at top left, rgba(248,250,252,0.12), transparent 65%);
+      font-size:11px;
+      color:var(--text-muted);
+    }
+
+    .hero-badge span{
+      padding:2px 8px;
+      border-radius:999px;
+      background:rgba(37,99,235,0.22);
+      color:#dbeafe;
+      font-weight:600;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:0.07em;
+    }
+
+    h1{
+      margin:0;
+      font-size:22px;
+      line-height:1.3;
+    }
+    @media(min-width:720px){
+      h1{ font-size:26px; }
+    }
+
+    .hero-sub{
+      margin:0;
+      max-width:600px;
+      color:var(--text-muted);
+      font-size:13px;
+    }
+
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      font-size:11px;
+    }
+
+    .pill{
+      padding:4px 8px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.4);
+      background:rgba(15,23,42,0.75);
+      color:var(--text-muted);
+      display:flex;
+      align-items:center;
+      gap:5px;
+    }
+
+    .pill-bullet{
+      width:4px;
+      height:4px;
+      border-radius:999px;
+      background:rgba(248,250,252,0.85);
     }
 
     .grid{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:18px;
+      grid-template-columns:1fr;
+      gap:16px;
     }
     @media(min-width:960px){
-      .grid{ grid-template-columns: 1fr 420px; align-items:start; }
+      .grid{
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+        align-items:flex-start;
+      }
     }
 
     .card{
-      background:var(--card);
-      border-radius:12px;
-      padding:18px;
-      box-shadow: 0 6px 18px rgba(11,78,135,0.06);
+      background:radial-gradient(circle at top left, rgba(30,64,175,0.20), transparent 55%),
+                 radial-gradient(circle at bottom right, rgba(8,47,73,0.35), transparent 55%),
+                 linear-gradient(145deg, rgba(15,23,42,0.96), rgba(15,23,42,0.96));
+      border-radius:18px;
+      padding:18px 16px;
+      border:1px solid rgba(148,163,184,0.45);
+      box-shadow:var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
     }
-    h1{ margin:0 0 8px 0; font-size:20px; }
-    p.lead{ margin:0 0 12px 0; color:var(--muted); font-size:14px; }
 
-    form{ display:flex; flex-direction:column; gap:12px; }
-    label{ font-size:13px; color:#0f172a; }
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    select,
-    textarea{
-      width:100%;
-      padding:10px 12px;
-      border-radius:8px;
-      border:1px solid #e6eefc;
-      background: #fbfdff;
-      font-size:14px;
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top, rgba(96,165,250,0.18), transparent 60%);
+      opacity:0.25;
+      pointer-events:none;
     }
-    textarea{ min-height:110px; resize:vertical; }
-    .row{ display:flex; gap:10px; }
-    .row .col{ flex:1; }
 
-    .btn{
+    .card > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .card h2{
+      margin:0 0 4px 0;
+      font-size:17px;
+    }
+
+    .card .lead{
+      margin:0 0 12px 0;
+      font-size:13px;
+      color:var(--text-muted);
+    }
+
+    .chip-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      margin-bottom:10px;
+    }
+
+    .chip{
+      padding:4px 8px;
+      border-radius:999px;
+      background:var(--chip-bg);
+      border:1px solid rgba(148,163,184,0.35);
+      font-size:11px;
+      color:var(--text-muted);
       display:inline-flex;
       align-items:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:10px;
+      gap:6px;
+    }
+
+    .chip-dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
       background:var(--accent);
-      color:white;
-      border:0;
-      cursor:pointer;
+      box-shadow:0 0 8px rgba(96,165,250,0.9);
+    }
+
+    .btn-main{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:none;
+      background:linear-gradient(135deg, var(--accent-strong), #38bdf8);
+      color:#eff6ff;
+      font-size:13px;
       font-weight:600;
+      cursor:pointer;
+      text-decoration:none;
+      box-shadow:0 10px 25px rgba(37,99,235,0.65);
+      margin-bottom:10px;
+    }
+
+    .btn-main span.icon{
       font-size:14px;
     }
-    .btn.ghost{ background:transparent; color:var(--accent); border:1px solid rgba(11,78,135,0.12); }
 
-    .muted{ color:var(--muted); font-size:13px; }
-
-    .list{ display:flex; flex-direction:column; gap:10px; margin-top:8px; }
-    .company{
-      padding:12px;
-      border-radius:10px;
-      background:linear-gradient(180deg,#ffffff,#fbfcff);
-      border:1px solid #eef6ff;
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
+    .btn-ghost{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,0.40);
+      background:rgba(15,23,42,0.85);
+      color:var(--text-muted);
+      font-size:11px;
+      text-decoration:none;
     }
-    .company .info{ flex:1; }
-    .badge{ font-size:12px; padding:6px 8px; border-radius:999px; background:#eef8ff; color:var(--accent); font-weight:600; }
 
-    .small{ font-size:12px; color:var(--muted); }
+    .btn-ghost .dot{
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:var(--accent);
+    }
 
-    .success{ color:var(--success); font-weight:700; font-size:13px; }
-    .danger{ color:var(--danger); font-weight:700; font-size:13px; }
+    details{
+      margin-top:10px;
+      border-radius:12px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(148,163,184,0.35);
+    }
 
-    footer{ max-width:1100px; margin:14px auto; padding:12px 18px; color:var(--muted); font-size:13px; text-align:center; }
+    summary{
+      padding:7px 10px;
+      cursor:pointer;
+      list-style:none;
+      font-size:12px;
+      color:var(--text-muted);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:6px;
+    }
 
-    /* Panel reclutador (collapsible) */
-    details.recruiter{ margin-top:14px; }
-    table{ width:100%; border-collapse:collapse; margin-top:12px; font-size:13px; }
-    th,td{ padding:8px 6px; border-bottom:1px solid #f2f6fb; text-align:left; vertical-align:top; }
-    pre{ background:#0b1220; color:#d6f5ff; padding:6px; border-radius:6px; overflow:auto; max-height:240px; }
+    summary::marker,
+    summary::-webkit-details-marker{
+      display:none;
+    }
 
-    .file-info{ font-size:13px; color:var(--muted); display:flex; gap:8px; align-items:center; }
-    .actions{ display:flex; gap:8px; flex-wrap:wrap; }
+    details[open] summary{
+      border-bottom:1px solid rgba(31,41,55,0.9);
+    }
+
+    .summary-label{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+
+    .summary-dot{
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 10px rgba(96,165,250,0.85);
+    }
+
+    .summary-arrow{
+      font-size:11px;
+      opacity:0.75;
+    }
+
+    .details-body{
+      padding:8px 10px 10px 10px;
+      font-size:11.5px;
+      color:var(--text-muted);
+    }
+
+    iframe{
+      border:none;
+      width:100%;
+      background:#020617;
+    }
+
+    .iframe-wrap{
+      margin-top:8px;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(30,64,175,0.6);
+      box-shadow:0 10px 30px rgba(15,23,42,0.8);
+    }
+
+    .tagline{
+      margin-top:10px;
+      font-size:11px;
+      color:var(--text-muted);
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      align-items:center;
+    }
+
+    .tagline span.badge{
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid rgba(56,189,248,0.55);
+      color:#e0f2fe;
+      font-size:10px;
+      text-transform:uppercase;
+      letter-spacing:0.06em;
+    }
+
+    footer{
+      border-top:1px solid rgba(30,64,175,0.5);
+      background:radial-gradient(circle at top, rgba(15,23,42,0.95), #020617);
+      padding:14px 16px 18px 16px;
+      margin-top:auto;
+    }
+
+    .footer-inner{
+      max-width:1120px;
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+      justify-content:space-between;
+      font-size:11px;
+      color:var(--text-muted);
+    }
+
+    .footer-inner strong{
+      color:#e5e7eb;
+      font-weight:600;
+    }
+
+    a{ color:#bfdbfe; }
+
+    @media(max-width:600px){
+      iframe{ height:320px; }
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="brand">
-      <div class="logo">BJ</div>
-      <div>
-        <div style="font-weight:700">Bolsa Juvenil Colombia</div>
-        <div class="muted" style="font-size:13px">Conecta empresas con jóvenes que buscan empleo</div>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">BJ</div>
+        <div>
+          <div class="brand-text-title">Bolsa Juvenil Colombia</div>
+          <div class="brand-text-sub">ImpulsaBuga · Jóvenes y empresas conectados</div>
+        </div>
+      </div>
+      <div class="nav-pill">
+        <div class="nav-dot"></div>
+        Proyecto independiente para jóvenes 🇨🇴
       </div>
     </div>
-    <nav class="muted" aria-label="navegación">
-      <span>Hecho para jóvenes 🇨🇴</span>
-    </nav>
   </header>
 
-  <main class="container">
-    <div style="display:flex; gap:12px; align-items:center; margin-bottom:10px;">
-      <h1>Deja tu hoja de vida — Postúlate</h1>
-      <div class="muted">Rellena tu información y sube tu CV en PDF</div>
-    </div>
-
-    <div class="grid">
-      <section class="card" aria-labelledby="form-title">
-        <h2 id="form-title" style="margin-top:0;">Formulario de postulante</h2>
-        <p class="lead">Jóvenes de Colombia: completa tus datos para que las empresas te encuentren.</p>
-
-        <form id="applicantForm" 
-              action="https://formspree.io/f/meovgqbr" 
-              method="POST"
-              enctype="multipart/form-data"
-              autocomplete="off" 
-              novalidate>
-
-          <div class="row">
-            <div class="col">
-              <label for="app-name">Nombre completo</label>
-              <input id="app-name" type="text" placeholder="Ej: Juan Pérez" required name="Nombre" />
-            </div>
-            <div class="col">
-              <label for="app-age">Edad</label>
-              <input id="app-age" type="text" placeholder="Ej: 22" inputmode="numeric" name="Edad" />
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <label for="app-email">Correo electrónico</label>
-              <input id="app-email" type="email" placeholder="tucorreo@mail.com" required name="Email" />
-            </div>
-            <div class="col">
-              <label for="app-phone">Teléfono / celular</label>
-              <input id="app-phone" type="tel" placeholder="Ej: +57 315 000 0000" name="Telefono" />
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <label for="app-city">Ciudad (Colombia)</label>
-              <input id="app-city" type="text" placeholder="Ej: Bogotá, Medellín, Cali" name="Ciudad" />
-            </div>
-            <div class="col">
-              <label for="app-education">Nivel de estudios</label>
-              <select id="app-education" name="Nivel_Estudios">
-                <option value="">-- Selecciona --</option>
-                <option>Primaria</option>
-                <option>Bachillerato</option>
-                <option>Técnico</option>
-                <option>Tecnólogo</option>
-                <option>Pregrado</option>
-                <option>Posgrado</option>
-              </select>
-            </div>
-          </div>
-
-          <label for="app-skills">Habilidades / cualidades (separa con comas)</label>
-          <textarea id="app-skills" placeholder="Ej: Manejo de Excel, Comunicación, Trabajo en equipo" name="Habilidades"></textarea>
-
-          <label for="app-cv">Subir CV (PDF, máximo 3 MB)</label>
-          <input id="app-cv" type="file" accept="application/pdf" name="CV_Adjunto" />
-
-          <div class="row" style="align-items:center;">
-            <div style="flex:1">
-              <button class="btn" type="submit">Enviar hoja de vida</button>
-              <button id="app-clear" class="btn ghost" type="button">Limpiar formulario</button>
-            </div>
-            <div id="app-status" class="muted" style="text-align:right;"></div>
-          </div>
-        </form>
-        
-        <details class="recruiter">
-          <summary style="cursor:pointer">Panel de reclutador (ver postulantes guardados)</summary>
-          <div id="app-list" style="margin-top:10px;">
-             </div>
-        </details>
+  <main>
+    <div class="shell">
+      <section class="hero">
+        <div class="hero-badge">
+          <span>Beta pública</span>
+          Primer experimento para conectar jóvenes con empresas usando herramientas gratuitas.
+        </div>
+        <h1>Encuentra jóvenes que quieren trabajar o empresas que sí les dan la oportunidad.</h1>
+        <p class="hero-sub">
+          Esta página usa Google Forms y Google Sheets para que cualquier persona pueda ver las listas de postulantes
+          y de empresas registradas. Todo es transparente y sencillo.
+        </p>
+        <div class="pill-row">
+          <div class="pill"><div class="pill-bullet"></div>Sin iniciar sesión</div>
+          <div class="pill"><div class="pill-bullet"></div>Listas públicas en tiempo real</div>
+          <div class="pill"><div class="pill-bullet"></div>Hecho por jóvenes para jóvenes</div>
+        </div>
       </section>
 
-      <aside class="card" aria-labelledby="companies-title">
-        <h2 id="companies-title">Empresas — Publica una búsqueda</h2>
-        <p class="muted">Si eres empresa, publica qué buscas para que los jóvenes sepan si aplicar.</p>
+      <section class="grid">
 
-        <form id="companyForm" novalidate>
-          <label for="comp-name">Nombre de la empresa</label>
-          <input id="comp-name" type="text" placeholder="Ej: Cafetería La 70" required />
+        <!-- POSTULANTES -->
+        <article class="card">
+          <h2>Postulantes — Jóvenes buscado trabajo</h2>
+          <p class="lead">Si eres joven en Colombia y estás buscando empleo, aquí puedes dejar tus datos para que las empresas te encuentren.</p>
 
-          <label for="comp-activity">¿A qué se dedica?</label>
-          <input id="comp-activity" type="text" placeholder="Ej: Servicios de alimentos" />
-
-          <div class="row">
-            <div class="col">
-              <label for="comp-size">Cantidad de personal aprox.</label>
-              <select id="comp-size">
-                <option value="">-- Selecciona --</option>
-                <option>1-5</option>
-                <option>6-20</option>
-                <option>21-50</option>
-                <option>51-200</option>
-                <option>200+</option>
-              </select>
+          <div class="chip-row">
+            <div class="chip">
+              <span class="chip-dot"></span>
+              Hoja de vida básica
             </div>
-            <div class="col">
-              <label for="comp-city">Ciudad</label>
-              <input id="comp-city" type="text" placeholder="Ej: Barranquilla" />
+            <div class="chip">
+              <span class="chip-dot"></span>
+              Correo y contacto visibles
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              Empresas revisan la lista
             </div>
           </div>
 
-          <label for="comp-qualities">Cualidades que busca</label>
-          <textarea id="comp-qualities" placeholder="Ej: Puntualidad, buena actitud, manejo de caja"></textarea>
+          <a class="btn-main"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSf5k5rw6LyieFZ-0optw9afbi1yLYUsrPPxjNAzEHeohcY91w/viewform?usp=header"
+             target="_blank">
+            <span class="icon">🧾</span>
+            Llenar formulario de postulación
+          </a>
 
-          <div style="display:flex; gap:8px; margin-top:8px;">
-            <button class="btn" id="comp-submit" type="button">Publicar empresa</button>
-            <button class="btn ghost" id="comp-clear" type="button">Limpiar</button>
+          <a class="btn-ghost"
+             href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgaCBLPVZbB6zhjDc0oBP7A1bkfi81Bj7dVqACbOmfrq-OdTi1-n7u1eOfTFZupB-gM0jJNC7B54PC/pubhtml"
+             target="_blank">
+            <span class="dot"></span>
+            Ver lista completa de postulantes en otra pestaña
+          </a>
+
+          <details class="recruiter" open>
+            <summary>
+              <div class="summary-label">
+                <div class="summary-dot"></div>
+                Ver tabla pública de postulantes
+              </div>
+              <span class="summary-arrow">▼</span>
+            </summary>
+            <div class="details-body">
+              Esta tabla se actualiza sola cada vez que alguien completa el formulario de postulante.
+              Puedes hacer scroll dentro del recuadro para ver más información.
+              <div class="iframe-wrap">
+                <iframe
+                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSgaCBLPVZbB6zhjDc0oBP7A1bkfi81Bj7dVqACbOmfrq-OdTi1-n7u1eOfTFZupB-gM0jJNC7B54PC/pubhtml"
+                  height="420"
+                  loading="lazy">
+                </iframe>
+              </div>
+            </div>
+          </details>
+
+          <div class="tagline">
+            <span class="badge">IMPORTANTE</span>
+            <span>No compartas datos demasiado sensibles (como dirección exacta o documento completo).</span>
           </div>
-        </form>
+        </article>
 
-        <h3 style="margin-top:14px; margin-bottom:8px;">Empresas publicadas</h3>
-        <div id="companies-list" class="list" aria-live="polite"></div>
+        <!-- EMPRESAS -->
+        <article class="card">
+          <h2>Empresas — Registra tus vacantes</h2>
+          <p class="lead">Si eres empresa o emprendimiento y quieres contratar jóvenes, registra tu información y qué tipo de perfil estás buscando.</p>
 
-        <details style="margin-top:10px;">
-          <summary>Instrucciones rápidas</summary>
-          <div class="muted" style="margin-top:8px;">
-            - Todos los datos quedan en tu navegador (localStorage).<br/>
-            - ¡El formulario de postulantes ya envía a un correo!<br/>
-            - Ideal para ferias de empleo universitarias y convocatorias locales.
+          <div class="chip-row">
+            <div class="chip">
+              <span class="chip-dot"></span>
+              Micro, pequeñas y grandes empresas
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              Búsquedas visibles para todos
+            </div>
+            <div class="chip">
+              <span class="chip-dot"></span>
+              Contacto directo con postulantes
+            </div>
           </div>
-        </details>
-      </aside>
+
+          <a class="btn-main"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSfMoMFj2xlTspF54ZHCjP5bFsCKNnmgohGi5htAknWOHMOEeQ/viewform?usp=header"
+             target="_blank">
+            <span class="icon">🏢</span>
+            Llenar formulario para empresas
+          </a>
+
+          <a class="btn-ghost"
+             href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSii46hh5LTCdp-r1fqUezjwcHw6urzJCRA_XxE9j6KwU9jmsADlJRf3fXm51tm47TM5yHU3twPWY9A/pubhtml"
+             target="_blank">
+            <span class="dot"></span>
+            Ver lista completa de empresas en otra pestaña
+          </a>
+
+          <details style="margin-top:10px;" open>
+            <summary>
+              <div class="summary-label">
+                <div class="summary-dot"></div>
+                Ver tabla pública de empresas
+              </div>
+              <span class="summary-arrow">▼</span>
+            </summary>
+            <div class="details-body">
+              Aquí se muestran todas las empresas que han completado el formulario, con la información
+              que dejaron para contactar y el tipo de perfil que buscan.
+              <div class="iframe-wrap">
+                <iframe
+                  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSii46hh5LTCdp-r1fqUezjwcHw6urzJCRA_XxE9j6KwU9jmsADlJRf3fXm51tm47TM5yHU3twPWY9A/pubhtml"
+                  height="350"
+                  loading="lazy">
+                </iframe>
+              </div>
+            </div>
+          </details>
+
+          <div class="tagline">
+            <span class="badge">Transparencia</span>
+            <span>Las vacantes quedan visibles para cualquier joven que visite esta página.</span>
+          </div>
+        </article>
+
+      </section>
     </div>
   </main>
 
   <footer>
-    Hecho con ❤ para jóvenes en Colombia — conserva privacidad: datos guardados solo en tu navegador.
+    <div class="footer-inner">
+      <div>Hecho con ❤ en Colombia — <strong>ImpulsaBuga</strong></div>
+      <div>Usando Google Forms + Google Sheets · Versión beta para prueba y aprendizaje</div>
+    </div>
   </footer>
-
-  <script>
-    // === UTILIDADES ===
-    function qs(id){ return document.getElementById(id); }
-    function showMsg(el, msg, type = 'ok') {
-      el.textContent = msg;
-      el.className = (type === 'error') ? 'danger' : (type === 'ok') ? 'success' : 'muted';
-      setTimeout(()=>{ el.textContent = ''; el.className='muted'; }, 5000);
-    }
-    // Escape HTML (buena práctica)
-    function escapeHtml(str){
-      if(!str) return '';
-      return String(str).replace(/[&<>"'`=\/]/g, function(s) {
-        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'}[s];
-      });
-    }
-
-    // ===== Empresas (SIN CAMBIOS, sigue guardando local) =====
-    const companiesKey = 'bolsa_companies_v1';
-    function loadCompanies(){
-      try{ return JSON.parse(localStorage.getItem(companiesKey) || '[]'); }catch(e){ return []; }
-    }
-    function saveCompanies(list){ localStorage.setItem(companiesKey, JSON.stringify(list)); }
-
-    function renderCompanies(){
-      const list = loadCompanies();
-      const container = qs('companies-list');
-      container.innerHTML = '';
-      if(!list.length){
-        container.innerHTML = '<div class="muted">No hay empresas publicadas todavía.</div>'; return;
-      }
-      list.slice().reverse().forEach((c,idx)=>{
-        const div = document.createElement('div');
-        div.className = 'company';
-        div.innerHTML = `
-          <div style="width:46px; height:46px; border-radius:10px; background:#f0f8ff; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent);">
-            ${(c.name||'E').charAt(0).toUpperCase()}
-          </div>
-          <div class="info">
-            <div style="display:flex; gap:8px; align-items:center; justify-content:space-between;">
-              <div style="font-weight:700">${escapeHtml(c.name || '—')}</div>
-              <div class="badge">${escapeHtml(c.size || '')}</div>
-            </div>
-            <div class="small" style="margin-top:6px">${escapeHtml(c.activity || '—')}</div>
-            <div style="margin-top:8px;" class="muted small"><strong>Cualidades:</strong> ${escapeHtml(c.qualities || 'No especificado')}</div>
-            <div style="margin-top:8px;" class="small">Ciudad: ${escapeHtml(c.city || '—')}</div>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    qs('comp-submit').addEventListener('click', ()=>{
-      const name = qs('comp-name').value.trim();
-      if(!name){ showMsg(qs('app-status'), 'El nombre de la empresa es obligatorio.', 'error'); return; }
-      const c = {
-        name,
-        activity: qs('comp-activity').value.trim(),
-        size: qs('comp-size').value,
-        qualities: qs('comp-qualities').value.trim(),
-        city: qs('comp-city').value.trim(),
-        createdAt: new Date().toISOString()
-      };
-      const arr = loadCompanies();
-      arr.push(c);
-      saveCompanies(arr);
-      renderCompanies();
-      qs('companyForm').reset();
-      showMsg(qs('app-status'), 'Empresa publicada correctamente.');
-    });
-
-    qs('comp-clear').addEventListener('click', ()=>{ qs('companyForm').reset(); });
-
-    
-    function renderApplicants(){
-       const wrap = qs('app-list');
-       wrap.innerHTML = '<div class="muted">Las postulaciones ahora se envían directamente a tu correo electrónico a través de Formspree. Revisa tu bandeja de entrada.</div>';
-    }
-
-    qs('applicantForm').addEventListener('submit', async function(e){
-      
-      const name = qs('app-name').value.trim();
-      const email = qs('app-email').value.trim();
-      
-      if(!name || !email){ 
-        e.preventDefault();
-        showMsg(qs('app-status'), 'Nombre y correo son obligatorios.', 'error'); 
-        return; 
-      }
-
-      const fileInput = qs('app-cv');
-      if(fileInput.files && fileInput.files[0]){
-        const f = fileInput.files[0];
-        if(f.type !== 'application/pdf'){ 
-          e.preventDefault();
-          showMsg(qs('app-status'), 'Solo se permiten archivos PDF.', 'error'); 
-          return; 
-        }
-        if(f.size > 3 * 1024 * 1024){ 
-          e.preventDefault(); 
-          showMsg(qs('app-status'), 'El PDF no puede superar 3 MB.', 'error'); 
-          return; 
-        }
-      }
-
-      showMsg(qs('app-status'), 'Enviando postulación...');
-    });
-
-    qs('app-clear').addEventListener('click', ()=>qs('applicantForm').reset());
-
-    renderCompanies();
-    renderApplicants(); 
-  </script>
 </body>
 </html>
